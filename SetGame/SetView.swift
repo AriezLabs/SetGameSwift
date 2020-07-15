@@ -8,14 +8,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SetView: View {
+    @ObservedObject var model: ViewModel
+    
     var body: some View {
         Text("Hello, World!")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SetView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SetView(model: ViewModel())
     }
 }

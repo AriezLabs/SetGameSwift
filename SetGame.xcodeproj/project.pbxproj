@@ -9,21 +9,45 @@
 /* Begin PBXBuildFile section */
 		91F46DFC24BCF19900E49078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFB24BCF19900E49078 /* AppDelegate.swift */; };
 		91F46DFE24BCF19900E49078 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFD24BCF19900E49078 /* SceneDelegate.swift */; };
-		91F46E0024BCF19900E49078 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFF24BCF19900E49078 /* ContentView.swift */; };
+		91F46E0024BCF19900E49078 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFF24BCF19900E49078 /* SetView.swift */; };
 		91F46E0224BCF19A00E49078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F46E0124BCF19A00E49078 /* Assets.xcassets */; };
 		91F46E0524BCF19A00E49078 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F46E0424BCF19A00E49078 /* Preview Assets.xcassets */; };
 		91F46E0824BCF19A00E49078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F46E0624BCF19A00E49078 /* LaunchScreen.storyboard */; };
+		91F46E1124BCF1E900E49078 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E0F24BCF1E900E49078 /* Grid.swift */; };
+		91F46E1224BCF1E900E49078 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1024BCF1E900E49078 /* GridLayout.swift */; };
+		91F46E1424BCF2A600E49078 /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1324BCF2A600E49078 /* SetModel.swift */; };
+		91F46E1624BCFB7600E49078 /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1524BCFB7600E49078 /* String+Subscript.swift */; };
+		91F46E1824BCFD9500E49078 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1724BCFD9500E49078 /* Array+Identifiable.swift */; };
+		91F46E1A24BE010D00E49078 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1924BE010D00E49078 /* ViewModel.swift */; };
+		91F46E1C24BE057400E49078 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1B24BE057400E49078 /* CardView.swift */; };
+		91F46E1E24BF403800E49078 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1D24BF403800E49078 /* Card.swift */; };
+		91F46E2024BF43E300E49078 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E1F24BF43E300E49078 /* Diamond.swift */; };
+		91F46E2324BF45F600E49078 /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E2224BF45F600E49078 /* Oval.swift */; };
+		91F46E2524BF487200E49078 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E2424BF487200E49078 /* ViewConstants.swift */; };
+		91F46E2724BF48FE00E49078 /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46E2624BF48FE00E49078 /* Squiggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		91F46DF824BCF19900E49078 /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F46DFB24BCF19900E49078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91F46DFD24BCF19900E49078 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		91F46DFF24BCF19900E49078 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		91F46DFF24BCF19900E49078 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		91F46E0124BCF19A00E49078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91F46E0424BCF19A00E49078 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91F46E0724BCF19A00E49078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91F46E0924BCF19A00E49078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91F46E0F24BCF1E900E49078 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		91F46E1024BCF1E900E49078 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		91F46E1324BCF2A600E49078 /* SetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
+		91F46E1524BCFB7600E49078 /* String+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
+		91F46E1724BCFD9500E49078 /* Array+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
+		91F46E1924BE010D00E49078 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		91F46E1B24BE057400E49078 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		91F46E1D24BF403800E49078 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		91F46E1F24BF43E300E49078 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		91F46E2224BF45F600E49078 /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
+		91F46E2424BF487200E49078 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		91F46E2624BF48FE00E49078 /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +80,18 @@
 		91F46DFA24BCF19900E49078 /* SetGame */ = {
 			isa = PBXGroup;
 			children = (
+				91F46E2124BF45DB00E49078 /* Views */,
 				91F46DFB24BCF19900E49078 /* AppDelegate.swift */,
 				91F46DFD24BCF19900E49078 /* SceneDelegate.swift */,
-				91F46DFF24BCF19900E49078 /* ContentView.swift */,
+				91F46E1B24BE057400E49078 /* CardView.swift */,
+				91F46DFF24BCF19900E49078 /* SetView.swift */,
+				91F46E1924BE010D00E49078 /* ViewModel.swift */,
+				91F46E1324BCF2A600E49078 /* SetModel.swift */,
+				91F46E1D24BF403800E49078 /* Card.swift */,
+				91F46E0F24BCF1E900E49078 /* Grid.swift */,
+				91F46E1024BCF1E900E49078 /* GridLayout.swift */,
+				91F46E1524BCFB7600E49078 /* String+Subscript.swift */,
+				91F46E1724BCFD9500E49078 /* Array+Identifiable.swift */,
 				91F46E0124BCF19A00E49078 /* Assets.xcassets */,
 				91F46E0624BCF19A00E49078 /* LaunchScreen.storyboard */,
 				91F46E0924BCF19A00E49078 /* Info.plist */,
@@ -73,6 +106,17 @@
 				91F46E0424BCF19A00E49078 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		91F46E2124BF45DB00E49078 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91F46E1F24BF43E300E49078 /* Diamond.swift */,
+				91F46E2224BF45F600E49078 /* Oval.swift */,
+				91F46E2624BF48FE00E49078 /* Squiggle.swift */,
+				91F46E2424BF487200E49078 /* ViewConstants.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +190,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F46E2724BF48FE00E49078 /* Squiggle.swift in Sources */,
+				91F46E2024BF43E300E49078 /* Diamond.swift in Sources */,
 				91F46DFC24BCF19900E49078 /* AppDelegate.swift in Sources */,
+				91F46E2524BF487200E49078 /* ViewConstants.swift in Sources */,
+				91F46E1A24BE010D00E49078 /* ViewModel.swift in Sources */,
 				91F46DFE24BCF19900E49078 /* SceneDelegate.swift in Sources */,
-				91F46E0024BCF19900E49078 /* ContentView.swift in Sources */,
+				91F46E1224BCF1E900E49078 /* GridLayout.swift in Sources */,
+				91F46E1C24BE057400E49078 /* CardView.swift in Sources */,
+				91F46E2324BF45F600E49078 /* Oval.swift in Sources */,
+				91F46E0024BCF19900E49078 /* SetView.swift in Sources */,
+				91F46E1424BCF2A600E49078 /* SetModel.swift in Sources */,
+				91F46E1824BCFD9500E49078 /* Array+Identifiable.swift in Sources */,
+				91F46E1624BCFB7600E49078 /* String+Subscript.swift in Sources */,
+				91F46E1124BCF1E900E49078 /* Grid.swift in Sources */,
+				91F46E1E24BF403800E49078 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
