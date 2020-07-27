@@ -10,11 +10,17 @@ import SwiftUI
 
 private struct SquiggleShape: Shape {
     // Not sure how to get a hold of geometry (needed to find proper width etc) besides passing it in here
-    let geometry: GeometryProxy
+    var size: CGFloat
+    
+    // This is required so this shape animates smoothly.
+    var animatableData: CGFloat {
+        get { return size }
+        set { size = newValue }
+    }
     
     func path(in rect: CGRect) -> Path {
         Path { path in
-            let width: CGFloat = min(self.geometry.size.width, self.geometry.size.height)
+            let width: CGFloat = size
             let height = width
             
             // IDK what this does, not needed
@@ -30,7 +36,6 @@ private struct SquiggleShape: Shape {
             
             path.addArc(center: CGPoint(x: width * 0.5, y: 0.5 * height), radius: width / 2, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: false)
             
-
             path.addLine(to: CGPoint(x: width * 0.25, y: 0 * height))
         }
     }
@@ -44,12 +49,12 @@ struct Squiggle: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                SquiggleShape(geometry: geometry)
+                SquiggleShape(size: min(geometry.size.width, geometry.size.height))
                     .stroke(lineWidth: Constants.outlineWidth(for: geometry))
                     .fill(self.color)
                     .aspectRatio(1, contentMode: .fit)
                 
-                SquiggleShape(geometry: geometry)
+                SquiggleShape(size: min(geometry.size.width, geometry.size.height))
                     .fill(self.color)
                     .opacity(self.fillOpacity)
                     .aspectRatio(1, contentMode: .fit)

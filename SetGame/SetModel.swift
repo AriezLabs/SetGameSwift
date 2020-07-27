@@ -10,15 +10,27 @@ import Foundation
 
 struct SetModel {
     
-    private(set) var cards: [Card] = {
+    private(set) var cards: [Card]
+    
+    private(set) var dealtCards: [Card] = Array<Card>()
+    
+    init() {
         var cards = Array<Card>()
         for i in 0 ..< 81 {
             cards.append(Card(id: i))
         }
-        return cards.shuffled()
-    }()
+        self.cards = cards.shuffled()
+    }
     
-    private(set) var dealtCards: [Card] = Array<Card>()
+    /// O(n)?
+    var selectedCards: [Card] {
+        return dealtCards.filter() { $0.selected }
+    }
+    
+    /// O(n)?
+    var nSelectedCards: Int {
+        return dealtCards.filter({ $0.selected }).count
+    }
     
     /// Move dealt cards back to deck and reshuffle
     mutating func restart() {
@@ -28,8 +40,10 @@ struct SetModel {
         cards.shuffle()
     }
     
-    /// Deal out 12 cards if none have been dealt yet or else deal 3 more.
+    /// Deal out 12 cards if none have been dealt yet or else deal 3 more. Also take a set if selected.
     mutating func deal() {
+        takeSet()
+        
         var i: Int
         if dealtCards.count == 0 {
             i = 12
@@ -41,44 +55,86 @@ struct SetModel {
         }
     }
     
-    /// True iff the cards have either all the same or all different shape, color, number and shading.
-    func isSet(_ c1: Card, _ c2: Card, _ c3: Card) -> Bool {
-        func checkForProperty(property: (Card) -> Int) -> Bool {
-            let nUniqueValues = Set([property(c1), property(c2), property(c3)]).count
-            return nUniqueValues != 2
+    func selectedCardsMatch() -> Bool {
+        if nSelectedCards == 3 {
+
+            func checkForProperty(_ toProperty: (Card) -> Int) -> Bool {
+                let nUniqueValues = Set(selectedCards.map(toProperty)).count
+                return nUniqueValues != 2
+            }
+            
+            return checkForProperty({ $0.number.rawValue }) &&
+                checkForProperty({ $0.color.rawValue }) &&
+                checkForProperty({ $0.shape.rawValue }) &&
+                checkForProperty({ $0.shading.rawValue })
         }
         
-        return checkForProperty() { $0.number.rawValue } &&
-               checkForProperty() { $0.color.rawValue } &&
-               checkForProperty() { $0.shape.rawValue } &&
-               checkForProperty() { $0.shading.rawValue }
+        return false
     }
     
-    /// If a set was correctly identified, remove it from the dealt cards. Do nothing if one or more cards aren't among those dealt. Return true upon success.
-    mutating func callSet(_ c1: Card, _ c2: Card, _ c3: Card) -> Bool {
-        if isSet(c1, c2, c3) {
-            if let i1 = dealtCards.firstIndex(matching: c1), let i2 = dealtCards.firstIndex(matching: c2), let i3 = dealtCards.firstIndex(matching: c3) {
-                let order = [i1, i2, i3].sorted().reversed()
-                for i in order {
-                    dealtCards.remove(at: i)
+    mutating func takeSet() {
+        if nSelectedCards == 3 {
+            if selectedCardsMatch() {
+                selectedCards.forEach() {
+                    dealtCards[dealtCards.firstIndex(matching: $0)!].inDeck = false
                 }
-                return true
+            }
+            
+            selectedCards.forEach() {
+                dealtCards[dealtCards.firstIndex(matching: $0)!].selected = false
             }
         }
-        return false
+    }
+    
+    mutating func matchSet() {
+        // Check if it's a set
+        if nSelectedCards == 3 {
+            if selectedCardsMatch() {
+                selectedCards.forEach() {
+                    dealtCards[dealtCards.firstIndex(matching: $0)!].matched = true
+                }
+            }
+        }
+    }
+    
+    /// Remove a previously selected set if present. Select card. Perform set matching.
+    mutating func select(_ c: Card) {
+        // Select (or deselect) new card
+        if let idx = dealtCards.firstIndex(matching: c), dealtCards[idx].inDeck {
+
+            if nSelectedCards < 3 {
+                dealtCards[idx].selected = !dealtCards[idx].selected
+            
+            } else if nSelectedCards == 3 {
+                
+                if selectedCardsMatch() {
+                    takeSet()
+                    
+                } else {
+                    selectedCards.forEach() {
+                        dealtCards[dealtCards.firstIndex(matching: $0)!].selected = false
+                    }
+                    dealtCards[idx].selected = !dealtCards[idx].selected
+                }
+            }
+        }
     }
     
     struct Card: CustomStringConvertible, Identifiable {
         let id: String
         
+        var selected: Bool = false
+        var matched: Bool = false
+        var inDeck: Bool = true
+        
+        // ID is a 4 digit, base 3 number representing a card.
+        // For example, id 0201 means: striped (1) diamond (0) green (2) one (0)
         init(id: Int) {
             var paddedId = String(id, radix: 3)
             while paddedId.count < 4 {
                 paddedId = "0" + paddedId
             }
             self.id = paddedId
-            
-            print(self.number.rawValue)
         }
         
         var description: String {

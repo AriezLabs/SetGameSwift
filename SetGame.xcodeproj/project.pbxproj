@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91EC392624C74649003D3525 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		91F46DF824BCF19900E49078 /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F46DFB24BCF19900E49078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91F46DFD24BCF19900E49078 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 				91F46E0624BCF19A00E49078 /* LaunchScreen.storyboard */,
 				91F46E0924BCF19A00E49078 /* Info.plist */,
 				91F46E0324BCF19A00E49078 /* Preview Content */,
+				91EC392624C74649003D3525 /* README.md */,
 			);
 			path = SetGame;
 			sourceTree = "<group>";
@@ -345,6 +347,7 @@
 				DEVELOPMENT_TEAM = 2S39MFYC8N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SetGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +368,7 @@
 				DEVELOPMENT_TEAM = 2S39MFYC8N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SetGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
