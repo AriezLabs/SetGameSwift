@@ -13,14 +13,44 @@ struct SetView: View {
     
     let paddingPerc: CGFloat = 0.005
     
+    func dealAnimated() {
+        withAnimation(.easeInOut) {
+            self.model.deal()
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Grid(self.model.dealtCards) { card in
+                HStack {
+                    Spacer()
+                    
+                    Button("New game") {
+                        withAnimation(Animation.easeInOut) {
+                            self.model.restart()
+                        }
+                        self.dealAnimated()
+                    }
+                    
+                    Spacer()
+                    
+                    Text("Score: \(self.model.score)")
+                        .bold()
+                    
+                    Spacer()
+                }
+                
+                
+                Spacer(minLength: 10)
+                
+                Grid(self.model.dealtCards) { card, index, layout in
                     CardView(appearance: ViewModel.CardAppearance(for: card, in: self.model))
                         .padding(geometry.size.height * self.paddingPerc)
-                        .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.2)))
+                        .transition(
+                            card.matched ?
+                                AnyTransition.offset(x: -layout.location(ofItemAt: index).x + geometry.size.width, y: -layout.location(ofItemAt: index).y + geometry.size.height)
+                            :   AnyTransition.offset(x: -layout.location(ofItemAt: index).x - 30, y: -layout.location(ofItemAt: index).y - 50)
+                        )
                         .onTapGesture {
                             withAnimation(Animation.easeInOut(duration: 0.2)) {
                                 self.model.select(card)
@@ -31,12 +61,15 @@ struct SetView: View {
                             }
                         }
                 }
+                .onAppear() {
+                    self.dealAnimated()
+                }
+                
+                Spacer(minLength: 15)
                 
                 Button("Deal") {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        self.model.deal()
-                    }
-                }
+                    self.dealAnimated()
+                }.disabled(self.model.nCardsLeft == 0)
             }
         }
     }

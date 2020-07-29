@@ -14,6 +14,8 @@ struct SetModel {
     
     private(set) var dealtCards: [Card] = Array<Card>()
     
+    private(set) var score: Int = 0
+    
     init() {
         var cards = Array<Card>()
         for i in 0 ..< 81 {
@@ -72,12 +74,14 @@ struct SetModel {
         return false
     }
     
+    /// Removes a matching set from deck.
     mutating func takeSet() {
         if nSelectedCards == 3 {
             if selectedCardsMatch() {
                 selectedCards.forEach() {
                     dealtCards[dealtCards.firstIndex(matching: $0)!].inDeck = false
                 }
+                score += 1
             }
             
             selectedCards.forEach() {
@@ -86,12 +90,17 @@ struct SetModel {
         }
     }
     
+    /// Sets Card.matched to true if a set has been chosen.
     mutating func matchSet() {
         // Check if it's a set
         if nSelectedCards == 3 {
             if selectedCardsMatch() {
                 selectedCards.forEach() {
                     dealtCards[dealtCards.firstIndex(matching: $0)!].matched = true
+                }
+            } else {
+                selectedCards.forEach() {
+                    dealtCards[dealtCards.firstIndex(matching: $0)!].inUnmatchingTrio = true
                 }
             }
         }
@@ -123,9 +132,16 @@ struct SetModel {
     struct Card: CustomStringConvertible, Identifiable {
         let id: String
         
-        var selected: Bool = false
         var matched: Bool = false
+        var inUnmatchingTrio: Bool = false // True iff this card is one of 3 selected and they don't match
         var inDeck: Bool = true
+        var selected: Bool = false {
+            didSet {
+                if selected == false {
+                    inUnmatchingTrio = false
+                }
+            }
+        }
         
         // ID is a 4 digit, base 3 number representing a card.
         // For example, id 0201 means: striped (1) diamond (0) green (2) one (0)

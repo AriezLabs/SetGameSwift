@@ -18,7 +18,13 @@ struct CardView: View {
     var lineWidth: CGFloat = 0.015
     
     var borderColor: Color {
-        appearance.card.matched ? .green : .init(white: 0.3)
+        if appearance.card.matched {
+            return .green
+        } else if appearance.card.inUnmatchingTrio {
+            return .red
+        } else {
+            return .init(white: 0.3)
+        }
     }
     
     var fillOpacity: Double {
@@ -29,6 +35,9 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                RoundedRectangle(cornerRadius: geometry.size.height * self.cornerRadius)
+                    .foregroundColor(.white)
+                
                 RoundedRectangle(cornerRadius: geometry.size.height * self.cornerRadius)
                     .foregroundColor(.black)
                     .opacity(self.fillOpacity)
