@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914035A724D1AED300230C1D /* AnimCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914035A624D1AED300230C1D /* AnimCallback.swift */; };
+		914035AB24D1BB6700230C1D /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 914035AA24D1BB6700230C1D /* screenshot.png */; };
 		91F46DFC24BCF19900E49078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFB24BCF19900E49078 /* AppDelegate.swift */; };
 		91F46DFE24BCF19900E49078 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFD24BCF19900E49078 /* SceneDelegate.swift */; };
 		91F46E0024BCF19900E49078 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46DFF24BCF19900E49078 /* SetView.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		914035A624D1AED300230C1D /* AnimCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimCallback.swift; sourceTree = "<group>"; };
+		914035AA24D1BB6700230C1D /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		91EC392624C74649003D3525 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		91F46DF824BCF19900E49078 /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F46DFB24BCF19900E49078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,11 +94,13 @@
 				91F46E1024BCF1E900E49078 /* GridLayout.swift */,
 				91F46E1524BCFB7600E49078 /* String+Subscript.swift */,
 				91F46E1724BCFD9500E49078 /* Array+Identifiable.swift */,
+				914035A624D1AED300230C1D /* AnimCallback.swift */,
 				91F46E0124BCF19A00E49078 /* Assets.xcassets */,
 				91F46E0624BCF19A00E49078 /* LaunchScreen.storyboard */,
 				91F46E0924BCF19A00E49078 /* Info.plist */,
 				91F46E0324BCF19A00E49078 /* Preview Content */,
 				91EC392624C74649003D3525 /* README.md */,
+				914035AA24D1BB6700230C1D /* screenshot.png */,
 			);
 			path = SetGame;
 			sourceTree = "<group>";
@@ -179,6 +185,7 @@
 				91F46E0824BCF19A00E49078 /* LaunchScreen.storyboard in Resources */,
 				91F46E0524BCF19A00E49078 /* Preview Assets.xcassets in Resources */,
 				91F46E0224BCF19A00E49078 /* Assets.xcassets in Resources */,
+				914035AB24D1BB6700230C1D /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +200,7 @@
 				91F46E2024BF43E300E49078 /* Diamond.swift in Sources */,
 				91F46DFC24BCF19900E49078 /* AppDelegate.swift in Sources */,
 				91F46E2524BF487200E49078 /* ViewConstants.swift in Sources */,
+				914035A724D1AED300230C1D /* AnimCallback.swift in Sources */,
 				91F46E1A24BE010D00E49078 /* ViewModel.swift in Sources */,
 				91F46DFE24BCF19900E49078 /* SceneDelegate.swift in Sources */,
 				91F46E1224BCF1E900E49078 /* GridLayout.swift in Sources */,

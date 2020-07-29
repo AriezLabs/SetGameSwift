@@ -23,14 +23,12 @@ struct SetView: View {
         GeometryReader { geometry in
             VStack {
                 HStack {
-                    Spacer()
-                    
                     Button("New game") {
                         withAnimation(Animation.easeInOut) {
                             self.model.restart()
                         }
                         self.dealAnimated()
-                    }
+                    }.padding()
                     
                     Spacer()
                     
@@ -38,10 +36,13 @@ struct SetView: View {
                         .bold()
                     
                     Spacer()
+                    
+                    Button("Cheat") {
+                        withAnimation(Animation.easeInOut) {
+                            self.model.cheat()
+                        }
+                    }.padding()
                 }
-                
-                
-                Spacer(minLength: 10)
                 
                 Grid(self.model.dealtCards) { card, index, layout in
                     CardView(appearance: ViewModel.CardAppearance(for: card, in: self.model))
@@ -65,7 +66,7 @@ struct SetView: View {
                     self.dealAnimated()
                 }
                 
-                Spacer(minLength: 15)
+                Spacer(minLength: 10)
                 
                 Button("Deal") {
                     self.dealAnimated()

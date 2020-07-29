@@ -17,16 +17,6 @@ struct CardView: View {
     let aspectRatio: CGFloat = 2/3
     var lineWidth: CGFloat = 0.015
     
-    var borderColor: Color {
-        if appearance.card.matched {
-            return .green
-        } else if appearance.card.inUnmatchingTrio {
-            return .red
-        } else {
-            return .init(white: 0.3)
-        }
-    }
-    
     var fillOpacity: Double {
         self.appearance.card.selected ? 0.15 : 0
     }
@@ -44,7 +34,7 @@ struct CardView: View {
                 
                 RoundedRectangle(cornerRadius: geometry.size.height * self.cornerRadius)
                     .stroke(lineWidth: geometry.size.height * self.lineWidth)
-                    .foregroundColor(self.borderColor)
+                    .foregroundColor(self.appearance.borderColor)
                 
                 VStack {
                     ForEach(Range(0 ... self.appearance.number)) { _ in

@@ -36,11 +36,15 @@ class ViewModel: ObservableObject {
     }
     
     func matchSet() {
-        model.matchSet()
+        let _ = model.matchSet()
     }
     
     func restart() {
         model.restart()
+    }
+    
+    func cheat() {
+        model.cheat()
     }
     
     // MARK: IDK where this should go, prolly in sth like Cardify
@@ -52,6 +56,16 @@ class ViewModel: ObservableObject {
         init(for card: SetModel.Card, in model: ViewModel) {
             self.card = card
             self.model = model
+        }
+        
+        var borderColor: Color {
+            if card.matched {
+                return .green
+            } else if card.inUnmatchingTrio {
+                return .red
+            } else {
+                return .init(white: 0.3)
+            }
         }
         
         var number: Int {

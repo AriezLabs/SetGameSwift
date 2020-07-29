@@ -39,7 +39,13 @@ struct SetModel {
         for _ in 0 ..< dealtCards.count {
             cards.append(dealtCards.removeFirst())
         }
+        for i in 0 ..< cards.count {
+            cards[i].matched = false
+            cards[i].selected = false
+            cards[i].inDeck = true
+        }
         cards.shuffle()
+        score = 0
     }
     
     /// Deal out 12 cards if none have been dealt yet or else deal 3 more. Also take a set if selected.
@@ -65,10 +71,10 @@ struct SetModel {
                 return nUniqueValues != 2
             }
             
-            return checkForProperty({ $0.number.rawValue }) &&
-                checkForProperty({ $0.color.rawValue }) &&
-                checkForProperty({ $0.shape.rawValue }) &&
-                checkForProperty({ $0.shading.rawValue })
+            return checkForProperty() { $0.number.rawValue } &&
+                checkForProperty() { $0.color.rawValue } &&
+                checkForProperty() { $0.shape.rawValue } &&
+                checkForProperty() { $0.shading.rawValue }
         }
         
         return false
@@ -91,19 +97,21 @@ struct SetModel {
     }
     
     /// Sets Card.matched to true if a set has been chosen.
-    mutating func matchSet() {
+    mutating func matchSet() -> Bool {
         // Check if it's a set
         if nSelectedCards == 3 {
             if selectedCardsMatch() {
                 selectedCards.forEach() {
                     dealtCards[dealtCards.firstIndex(matching: $0)!].matched = true
                 }
+                return true
             } else {
                 selectedCards.forEach() {
                     dealtCards[dealtCards.firstIndex(matching: $0)!].inUnmatchingTrio = true
                 }
             }
         }
+        return false
     }
     
     /// Remove a previously selected set if present. Select card. Perform set matching.
@@ -124,6 +132,33 @@ struct SetModel {
                         dealtCards[dealtCards.firstIndex(matching: $0)!].selected = false
                     }
                     dealtCards[idx].selected = !dealtCards[idx].selected
+                }
+            }
+        }
+    }
+    
+    /// Select a set if possible. Naive implementation, n^3 runtime
+    mutating func cheat() {
+        selectedCards.forEach() {
+            dealtCards[dealtCards.firstIndex(matching: $0)!].selected = false
+        }
+        
+        for c1 in dealtCards where c1.inDeck {
+            for c2 in dealtCards where c2.inDeck {
+                for c3 in dealtCards where c3.inDeck {
+                    if c1 != c2 && c2 != c3 && c3 != c1 {
+                        dealtCards[dealtCards.firstIndex(matching: c1)!].selected = true
+                        dealtCards[dealtCards.firstIndex(matching: c2)!].selected = true
+                        dealtCards[dealtCards.firstIndex(matching: c3)!].selected = true
+                        
+                        if matchSet() {
+                            return
+                        } else {
+                            selectedCards.forEach() {
+                                dealtCards[dealtCards.firstIndex(matching: $0)!].selected = false
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -151,6 +186,10 @@ struct SetModel {
                 paddedId = "0" + paddedId
             }
             self.id = paddedId
+        }
+        
+        static func != (lhs: Card, rhs: Card) -> Bool {
+            return lhs.id != rhs.id
         }
         
         var description: String {
